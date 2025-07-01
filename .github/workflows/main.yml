@@ -1,0 +1,15 @@
+name: Secure Workflow
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Secret in Application
+        run: |
+          ./your_application --api-key="${{ secrets.API_KEY }}"
+          # Or, set it as an environment variable:
+          export API_KEY="${{ secrets.API_KEY }}"
+          ./your_application
